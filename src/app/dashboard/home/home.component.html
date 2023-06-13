@@ -1,0 +1,199 @@
+<app-dash-header></app-dash-header>
+
+<div class="content">
+  <div class="card">
+    <div class="marquee">
+      <b>Todays Board:</b>
+    </div>
+  </div>
+
+  <ng-container *ngFor="let case of filteredData">
+    <div class="card" *ngIf="case.nextDate" (click)="showcasedetails(case)">
+      <div class="party-names">
+        <p>{{ case.petitioner }}</p>
+      </div>
+      <div class="party-names">
+        <p>{{ case.respondent }}</p>
+      </div>
+
+      <div class="case-details">
+        <p><b>Case No:</b> {{ case.cnrNo }}</p>
+        <p><b>Next Date:</b> {{ case.nextDate }}</p>
+        <p><b>Coram:</b> {{ case.coram }}</p>
+      </div>
+      <div class="court-details">
+        <p><b>Court Name:</b> {{ case.courtName }}</p>
+      </div>
+    </div>
+  </ng-container>
+
+  <p-dialog
+  header="Case Details"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [responsive]="true"
+  [style]="{ width: '50vw' }"
+>
+  <div class="modal-body">
+    <ng-container *ngIf="selectedCaseId">
+      <ng-container *ngFor="let case of products">
+        <ng-container *ngIf="case.cnrNo === selectedCaseId">
+          <p><b>Act:</b> {{ case.act }}</p>
+          <p><b>BenchOfJudge:</b> {{ case.benchOfJudges }}</p>
+          <p><b>Category:</b> {{ case.category }}</p>
+          <p><b>Case No:</b> {{ case.cnrNo }}</p>
+          <p><b>Coram:</b> {{ case.coram }}</p>
+          <p><b>CourtName:</b> {{ case.courtName }}</p>
+          <p><b>DispBy:</b> {{ case.dispBy }}</p>
+          <p><b>DispDate:</b> {{ case.dispDate }}</p>
+          <p><b>DispType:</b> {{ case.dispType }}</p>
+          <p><b>District:</b> {{ case.district }}</p>
+          <p><b>Jurisdiction:</b> {{ case.jurisdiction }}</p>
+          <p><b>LastCoram:</b> {{ case.lastCoram }}</p>
+          <p><b>LastDate:</b> {{ case.lastDate }}</p>
+          <p><b>LastDateStage:</b> {{ case.lastDateStage }}</p>
+          <p><b>NextDate:</b> {{ case.nextDate }}</p>
+          <p><b>NextDateStage:</b> {{ case.nextDateStage }}</p>
+          <p><b>Petitioner:</b> {{ case.petitioner }}</p>
+          <p><b>PetnAdvocate:</b> {{ case.petnAdvocate }}</p>
+          <p><b>PetnOrResp:</b> {{ case.petnOrResp }}</p>
+          <p><b>RegDate:</b> {{ case.regDate }}</p>
+          <p><b>RegNo:</b> {{ case.regNo }}</p>
+          <p><b>ResAdvocate:</b> {{ case.resAdvocate }}</p>
+          <p><b>Respondent:</b> {{ case.respondent }}</p>
+          <p><b>StampNo:</b> {{ case.stampNo }}</p>
+          <p><b>Status:</b> {{ case.status }}</p>
+          <!-- Add other case details as needed -->
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="modal-footer">
+    <button pButton type="button" label="Close" (click)="closeModal()"></button>
+  </div>
+</p-dialog>
+
+</div>
+
+<!-- <p-table
+    scrollHeight="75vh"
+    [tableStyle]="{ 'min-width': '5rem' }"
+    styleClass="p-datatable-sm p-datatable-striped p-datatable-gridlines "
+    [value]="products"
+    [rowHover]="true"
+    [responsive]="true"
+    [rows]="4"
+    [paginator]="true"
+    [scrollable]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name" style="min-width: 15rem; text-align: center">
+          Party Names <p-sortIcon field="name"></p-sortIcon>
+        </th>
+        <th
+          class="text-center"
+          pSortableColumn="price"
+          style="min-width: 15rem; text-align: center"
+        >
+          Case Details <p-sortIcon field="price"></p-sortIcon>
+        </th>
+        <th
+          class="text-center"
+          pSortableColumn="price"
+          style="min-width: 10rem; text-align: center"
+        >
+          Court Details <p-sortIcon field="price"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-cases>
+      <tr class="table-row" (click)="showcasedetails(cases.cnrNo)">
+        <td class="table-cell" style="text-size-adjust: 10%">
+          <li>{{ cases.petitioner }}</li>
+          <br />
+          <span style="margin-left: 50%; color: red"> V/S</span><br /><br />
+          <li>{{ cases.respondent }}</li>
+        </td>
+        
+
+        <td>
+          <ul>
+            <table>
+              <tr>
+                <td style="width: 80px"><b> Case No:</b></td>
+                <td style="width: 100px">{{ cases.cnrNo }}</td>
+              </tr>
+            </table>
+          </ul>
+
+          <ul>
+            <table>
+              <tr>
+                <td><b>LastDate:</b></td>
+                <td style="width: 150px">{{ cases.lastDate }}</td>
+              </tr>
+            </table>
+          </ul>
+          <ul>
+            <table>
+              <tr>
+                <td><b>Coram:</b></td>
+                <td style="width: 150px">{{ cases.coram }}</td>
+              </tr>
+            </table>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <table>
+              <tr>
+                <td><b>Court Name:</b></td>
+                <td>{{ cases.courtName }}</td>
+              </tr>
+            </table>
+          </ul>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-dialog
+    header="Case Details"
+    [(visible)]="displayModal"
+    [modal]="true"
+    [style]="{ width: '50vw', border: '1px solid' }"
+    [draggable]="true"
+    [resizable]="true"
+  >
+
+  <ng-template pTemplate="body"> 
+
+    
+ 
+  </ng-template>
+    <ng-template pTemplate="footer">
+      <p-button
+        icon="pi pi-check"
+        (click)="displayModal = false"
+        label="Ok"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+</div> -->
+<!-- <ng-template pTemplate="summary">
+  <div class="flex align-items-center justify-content-between">
+    In total there are {{ resultarray ? resultarray.length : 0 }} products.
+  </div>
+</ng-template> -->
+
+<!-- <td class="table-cell">{{ product.stampNo }}</td>
+        <td class="table-cell">{{ product.regNo }}</td>
+        <td class="table-cell">{{ product.nextDate }}</td>
+        <td class="table-cell">{{ product.lastDate }}</td>
+        <td class="table-cell">{{ product.courtName }}</td> -->

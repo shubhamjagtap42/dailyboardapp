@@ -1,0 +1,562 @@
+<app-dash-header></app-dash-header>
+
+<p-toast></p-toast>
+
+<div class="container">
+  <div class="card-wrapper">
+    <div class="options">
+      <div class="search-wrapper">
+        <i class="pi pi-search"></i>
+        <input
+          type="text"
+          pInputText
+          class="p-inputtext-sm searchInputBox"
+          placeholder="Search"
+          (input)="filterCases($event)"
+          (keyup.enter)="resetFilter()"
+          [(ngModel)]="searchText"
+
+
+        />
+      </div>
+    </div>
+    <div class="cards-section">
+      <div *ngFor="let cases of filteredProducts || []" class="card" #dt>
+        <div class="card-content">
+          <div class="card-header">
+            <div class="party-names">
+              <div class="petitioner">{{ cases.petitioner }}</div>
+              <div class="vs">V/S</div>
+              <div class="respondent">{{ cases.respondent }}</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- Block 1: Case Details -->
+            <div class="block1">
+              <div class="block-header">Case Details</div>
+              <div class="case-details">
+                <div class="case-info-row">
+                  <div class="case-info">
+                    <div class="label">Case No:</div>
+                    <div class="value">{{ cases.cnrNo }}</div>
+                  </div>
+                  <div class="case-info">
+                    <div class="label">Stamp No:</div>
+                    <div class="value">{{ cases.stampNo }}</div>
+                  </div>
+                  <div class="case-info">
+                    <div class="label">Reg No:</div>
+                    <div class="value">{{ cases.regNo }}</div>
+                  </div>
+                  <div class="case-info">
+                    <div class="label">Reg Date:</div>
+                    <div class="value">{{ cases.regDate }}</div>
+                  </div>
+                  <div class="case-info">
+                    <div class="label">Petn Advocate:</div>
+                    <div class="value">{{ cases.petnAdvocate }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Block 2: Court Details -->
+            <div class="block2">
+              <div class="block-header">Court Details</div>
+              <div class="court-details">
+                <div class="court-info-row">
+                  <div class="court-info">
+                    <div class="label">District:</div>
+                    <div class="value">{{ cases.courtName }}</div>
+                  </div>
+                  <div class="court-info">
+                    <div class="label">Last Date:</div>
+                    <div class="value">{{ cases.lastDate }}</div>
+                  </div>
+                  <div class="court-info">
+                    <div class="label">Next Date:</div>
+                    <div class="value">{{ cases.nextDate }}</div>
+                  </div>
+                  <div class="court-info">
+                    <div class="label">District:</div>
+                    <div class="value">{{ cases.district }}</div>
+                  </div>
+                  <div class="court-info">
+                    <div class="label">Jurisdiction:</div>
+                    <div class="value">{{ cases.jurisdiction }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Block 3: Status Details -->
+            <div class="block3">
+              <div class="block-header">Status Details</div>
+              <div class="status-details">
+                <div class="status-info-row">
+                  <div class="status-info">
+                    <div class="label">Status:</div>
+                    <div class="value">{{ cases.status }}</div>
+                  </div>
+                  <div class="status-info">
+                    <div class="label">Petn Or Resp:</div>
+                    <div class="value">{{ cases.petnOrResp }}</div>
+                  </div>
+                  <div class="status-info">
+                    <div class="label">Last Order:</div>
+                    <div class="value">{{ cases.nextDate }}</div>
+                  </div>
+                  <div class="status-info">
+                    <button class="p-button p-button-sm orders" (click)="showModalDialog1(cases.cnrNo)">
+                      All Orders
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  <p-dialog
+    header="Orders"
+    [(visible)]="displayModal"
+    styleClass="dialogueorder"
+    [modal]="true"
+    [draggable]="true"
+    [resizable]="true"
+  >
+    <div class="dialog-content">
+      <p-timeline [value]="orderarray">
+        <ng-template pTemplate="content" let-event>
+          <div class="timeline-event">
+            <!-- <small class="p-text-secondary">{{ event.date }}</small> -->
+            <a (click)="DownloadOrders(event.file)" class="p-text-secondary">{{
+              event.file
+            }}</a>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="opposite" let-event>
+          <div class="timeline-date">DATE: {{ event.date }}</div>
+        </ng-template>
+      </p-timeline>
+    </div>
+    <ng-template pTemplate="footer">
+      <div class="dialog-footer">
+        <p-button
+          icon="pi pi-check"
+          (click)="displayModal = false"
+          label="Ok"
+          styleClass="p-button-text"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-dialog>
+
+  <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+</div>
+
+<!-- <div class="card-wrapper">
+  <div class="flex align-items-center justify-content-between options">
+    <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input
+        type="text"
+        pInputText
+        class="p-inputtext-sm searchInputBox"
+        placeholder="Search"
+        (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+      />
+    </span>
+  </div>
+  <div class="card-container">
+    <div *ngFor="let cases of products" class="card">
+      <div class="card-content">
+        <div class="card-header">
+          <div class="party-names">
+            <div class="petitioner">{{ cases.petitioner }}</div>
+            <div class="vs">V/S</div>
+            <div class="respondent">{{ cases.respondent }}</div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="case-details">
+            <div class="case-info">
+              <div class="label">Case No:</div>
+              <div class="value">{{ cases.cnrNo }}</div>
+            </div>
+            <div class="case-info">
+              <div class="label">Stamp No:</div>
+              <div class="value">{{ cases.stampNo }}</div>
+            </div>
+            <div class="case-info">
+              <div class="label">Reg No:</div>
+              <div class="value">{{ cases.regNo }}</div>
+            </div>
+            <div class="case-info">
+              <div class="label">Reg Date:</div>
+              <div class="value">{{ cases.regDate }}</div>
+            </div>
+            <div class="case-info">
+              <div class="label">Petn Advocate:</div>
+              <div class="value">{{ cases.petnAdvocate }}</div>
+            </div>
+          </div>
+
+          <div class="court-details">
+            <div class="court-info">
+              <div class="label">Court Name:</div>
+              <div class="value">{{ cases.courtName }}</div>
+            </div>
+            <div class="court-info">
+              <div class="label">Last Date:</div>
+              <div class="value">{{ cases.lastDate }}</div>
+            </div>
+            <div class="court-info">
+              <div class="label">Disp Date:</div>
+              <div class="value">{{ cases.dispDate }}</div>
+            </div>
+            <div class="court-info">
+              <div class="label">District:</div>
+              <div class="value">{{ cases.district }}</div>
+            </div>
+            <div class="court-info">
+              <div class="label">Jurisdiction:</div>
+              <div class="value">{{ cases.jurisdiction }}</div>
+            </div>
+          </div>
+
+          <div class="status-details">
+            <div class="status-info">
+              <div class="label">Status:</div>
+              <div class="value">{{ cases.status }}</div>
+            </div>
+            <div class="status-info">
+              <div class="label">Petn Or Resp:</div>
+              <div class="value">{{ cases.petnOrResp }}</div>
+            </div>
+            <div class="status-info">
+              <div class="label">Last Order:</div>
+              <div class="value">{{ cases.nextDate }}</div>
+            </div>
+            <div class="status-info">
+              <p-button
+                label="All Orders"
+                styleClass="p-button-sm orders"
+                (click)="showModalDialog1(cases.cnrNo)"
+              ></p-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <p-dialog
+    header="Orders"
+    [(visible)]="displayModal"
+    styleClass="dialogueorder"
+    [modal]="true"
+    [draggable]="true"
+    [resizable]="true"
+  >
+    <p class="m-0">
+      <p-timeline [value]="orderarray">
+        <ng-template pTemplate="content" let-event>
+          <small class="p-text-secondary">{{ event.date }}</small>
+          <a
+            (click)="DownloadOrders(event.file)"
+            class="p-text-secondary"
+          >{{ event.file }}</a>
+        </ng-template>
+        <ng-template pTemplate="opposite" let-event>
+          DATE: {{ event.date }}
+        </ng-template>
+      </p-timeline>
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button
+        icon="pi pi-check"
+        (click)="displayModal = false"
+        label="Ok"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+</div>
+ -->
+
+<!-- <p-toast> </p-toast>
+<div>
+  <div class="table-wrapper">
+    <p-table
+      #dt
+      styleClass="p-datatable-sm p-datatable-striped p-datatable-gridlines "
+      [value]="products"
+      [rows]="3"
+      [scrollable]="true"
+      scrollHeight="75vh"
+
+      [paginator]="true"
+      [globalFilterFields]="[
+        'petitioner',
+        'respondent',
+        'email',
+        'status',
+        'editedOn',
+        'createdOn'
+      ]"
+      [tableStyle]="{ 'min-width': '0.5rem' }"
+      [(selection)]="selectedProducts"
+      [rowHover]="true"
+      dataKey="id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [showCurrentPageReport]="true"
+    >
+      <ng-template pTemplate="caption">
+        <div class="options">
+          <div class="flex align-items-center justify-content-between">
+            <span class="p-input-icon-left">
+              <i class="pi pi-search"></i>
+              <input
+                type="text"
+                pInputText
+                class="p-inputtext-sm searchInputBox"
+                placeholder="Search"
+                (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+              />
+            </span>
+          </div>
+          <div
+            class="flex align-items-center justify-content-between"
+            style="margin-right: 70%"
+          >
+            <div class="field col-12 md:col-4">
+             
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th
+            pSortableColumn="name"
+            style="min-width: 15rem; text-align: center"
+          >
+            Party <p-sortIcon field="name"></p-sortIcon>
+          </th>
+          <th
+            pSortableColumn="category"
+            style="min-width: 15rem; text-align: center"
+          >
+            Case Details <p-sortIcon field="category"></p-sortIcon>
+          </th>
+          <th
+            class="text-center"
+            pSortableColumn="price"
+            style="min-width: 15rem; text-align: center"
+          >
+            Court Details <p-sortIcon field="price"></p-sortIcon>
+          </th>
+
+          <th
+            pSortableColumn="rating"
+            style="min-width: 15rem; text-align: center"
+          >
+            Remarks <p-sortIcon field="rating"></p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-cases>
+        <tr (click)="showcasedetails()">
+          <td style="text-size-adjust: 10%">
+            <li>{{ cases.petitioner }}</li>
+            <br />
+            <span style="margin-left: 50%; color: red"> V/S</span><br /><br />
+            <li>{{ cases.respondent }}</li>
+          </td>
+
+          <td>
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 310px"><b> Case No:</b></td>
+                  <td>{{ cases.cnrNo }}</td>
+                </tr>
+              </table>
+            </ul>
+
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 90px"><b> Stamp No:</b></td>
+                  <td>{{ cases.stampNo }}</td>
+                </tr>
+              </table>
+            </ul>
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 90px"><b> Reg No:</b></td>
+                  <td>{{ cases.regNo }}</td>
+                </tr>
+              </table>
+            </ul>
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 90px"><b> Reg Date:</b></td>
+                  <td>{{ cases.regDate }}</td>
+                </tr>
+              </table>
+            </ul>
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 110px"><b> Petn Advocate:</b></td>
+                  <td>{{ cases.petnAdvocate }}</td>
+                </tr>
+              </table>
+            </ul>
+          </td>
+
+          <td>
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 110px"><b> Court Name:</b></td>
+                  <td>{{ cases.courtName }}</td>
+                </tr>
+              </table>
+            </ul>
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 80px"><b> Last Date:</b></td>
+                  <td>{{ cases.lastDate }}</td>
+                </tr>
+              </table>
+            </ul>
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 80px"><b> Disp Date:</b></td>
+                  <td>{{ cases.dispDate }}</td>
+                </tr>
+              </table>
+            </ul>
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 90px"><b> District:</b></td>
+                  <td>{{ cases.district }}</td>
+                </tr>
+              </table>
+            </ul>
+
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 110px"><b> Jurisdiction:</b></td>
+                  <td>{{ cases.jurisdiction }}</td>
+                </tr>
+              </table>
+            </ul>
+          </td>
+
+          <td>
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 60px"><b> Status:</b></td>
+                  <td>{{ cases.status }}</td>
+                </tr>
+              </table>
+            </ul>
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 110px"><b> Petn Or Resp:</b></td>
+                  <td>{{ cases.petnOrResp }}</td>
+                </tr>
+              </table>
+            </ul>
+            <ul>
+              Last Order :
+            </ul>
+            <ul>
+              <table>
+                <tr>
+                  <td style="width: 90px"><b> Next Date:</b></td>
+                  <td>{{ cases.nextDate }}</td>
+                </tr>
+              </table>
+            </ul>
+            <ul>
+              <p-button
+                label="All Orders"
+                styleClass="p-button-sm orders"
+                (click)="showModalDialog1(cases.cnrNo)"
+              ></p-button>
+            </ul>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+          In total there are {{ products ? products.length : 0 }} products.
+        </div>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <p-dialog
+    header="Orders"
+    [(visible)]="displayModal"
+    styleClass="dialogueorder"
+    [modal]="true"
+    [draggable]="true"
+    [resizable]="true"
+  >
+    <p class="m-0">
+      <p-timeline [value]="orderarray">
+        <ng-template pTemplate="content" let-event>
+           <small class="p-text-secondary">{{ event.date }}</small> -->
+
+<!-- <a (click)="DownloadOrders(event.file)" class="p-text-secondary">{{
+            event.file
+          }}</a>
+        </ng-template>
+        <ng-template pTemplate="opposite" let-event>
+           DATE:
+          {{ event.date }}
+         
+        </ng-template>
+      </p-timeline>
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button
+        icon="pi pi-check"
+        (click)="displayModal = false"
+        label="Ok"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <p-confirmDialog [style]="{ width:'450px' }"></p-confirmDialog>
+</div> -->
+
+<!-- <p-calendar
+                name="selectedDate"
+                (ngModelChange)="selectedDate = $event" 
+                inputId="icon"
+                (onSelect)="
+                  dt.filter(filterDate(selectedDate), 'date', 'custom')
+                "
+                [ngModel]="selectedDate"
+              ></p-calendar> -->

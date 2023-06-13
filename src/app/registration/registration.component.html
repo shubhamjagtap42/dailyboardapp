@@ -1,0 +1,252 @@
+<div class="container">
+  <div class="registration-form">
+    <h2>Registration</h2>
+    <form [formGroup]="registrationForm" class="p-fluid">
+      <div class="p-field">
+        <label for="firstname">Name</label>
+        <input
+          type="text"
+          formControlName="name"
+          pInputText
+          class="p-inputtext"
+          [ngClass]="{
+            'p-invalid':
+              registrationForm.get('name')?.invalid &&
+              registrationForm.get('name')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            registrationForm.get('name')?.invalid &&
+            registrationForm.get('name')?.touched
+          "
+          class="p-error"
+        >
+          <small *ngIf="registrationForm.get('name')?.errors?.['required']"
+            >First Name is required.</small
+          >
+        </div>
+      </div>
+      
+      <div class="p-field">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          formControlName="email"
+          pInputText
+          class="p-inputtext"
+          [ngClass]="{
+            'p-invalid':
+              registrationForm.get('email')?.invalid &&
+              registrationForm.get('email')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            registrationForm.get('email')?.invalid &&
+            registrationForm.get('email')?.touched
+          "
+          class="p-error"
+        >
+          <small *ngIf="registrationForm.get('email')?.errors?.['required']"
+            >Username is required.</small
+          >
+          <small *ngIf="registrationForm.get('email')?.errors?.['pattern']"
+            >Please enter a valid Email Address.</small
+          >
+        </div>
+      </div>
+
+      <div class="p-field">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          pPassword
+          class="p-inputtext"
+          [ngClass]="{
+            'p-invalid':
+              registrationForm.get('password')?.invalid &&
+              registrationForm.get('password')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            registrationForm.get('password')?.invalid &&
+            registrationForm.get('password')?.touched
+          "
+          class="p-error"
+        >
+          <small *ngIf="registrationForm.get('password')?.errors?.['required']"
+            >Password is required.</small
+          >
+        </div>
+      </div>
+
+      <div class="p-field">
+        <label for="mobile">Mobile No</label>
+        <input
+          type="text"
+          formControlName="mobile"
+          pInputText
+          class="p-inputtext"
+          [ngClass]="{
+            'p-invalid':
+              registrationForm.get('mobile')?.invalid &&
+              registrationForm.get('mobile')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            registrationForm.get('mobile')?.invalid &&
+            registrationForm.get('mobile')?.touched
+          "
+          class="p-error"
+        >
+          <small *ngIf="registrationForm.get('mobile')?.errors?.['required']"
+            >Mobileno is required.</small
+          >
+          <small *ngIf="registrationForm.get('mobile')?.errors?.['pattern']"
+            >Please enter a valid mobile number.</small
+          >
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="searchoption1">Search Option 1</label>
+        <input
+          type="text"
+          formControlName="searchoption1"
+          pInputText
+          class="p-inputtext"
+          [ngClass]="{
+            'p-invalid':
+              registrationForm.get('searchoption1')?.invalid &&
+              registrationForm.get('searchoption1')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            registrationForm.get('searchoption1')?.invalid &&
+            registrationForm.get('searchoption1')?.touched
+          "
+          class="p-error"
+        >
+          <small
+            *ngIf="registrationForm.get('searchoption1')?.errors?.['required']"
+            >Search Option 1 is required.</small
+          >
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="searchoption2">Search Option 2</label>
+        <input
+          type="text"
+          formControlName="searchoption2"
+          pInputText
+          class="p-inputtext"
+          [ngClass]="{
+            'p-invalid':
+              registrationForm.get('searchoption2')?.invalid &&
+              registrationForm.get('searchoption2')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            registrationForm.get('searchoption2')?.invalid &&
+            registrationForm.get('searchoption2')?.touched
+          "
+          class="p-error"
+        >
+          <small
+            *ngIf="registrationForm.get('searchoption2')?.errors?.['required']"
+            >Search Option 2 is required.</small
+          >
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="searchoption3">Search Option 3</label>
+        <input
+          type="text"
+          formControlName="searchoption3"
+          pInputText
+          class="p-inputtext"
+          [ngClass]="{
+            'p-invalid':
+              registrationForm.get('searchoption3')?.invalid &&
+              registrationForm.get('searchoption3')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            registrationForm.get('searchoption3')?.invalid &&
+            registrationForm.get('searchoption3')?.touched
+          "
+          class="p-error"
+        >
+          <small
+            *ngIf="registrationForm.get('searchoption3')?.errors?.['required']"
+            >Search Option 2 is required.</small
+          >
+        </div>
+      </div>
+      <div class="p-field">
+        <button
+          [disabled]="loading"
+          pButton
+          type="submit"
+          class="p-button-primary"
+          (click)="signup()"
+        >
+          <span *ngIf="loading" class="p-progress-spinner-icon"></span>
+          <span *ngIf="!loading">Register</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- <div class="container">
+    <h2>Registration Form</h2>
+    <form [formGroup]="regform">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" pInputText formControlName="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" pInputText formControlName="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" pPassword formControlName="password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" pPassword formControlName="confirmpassword" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" pInputText formControlName="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" pInputTextarea formControlName="address" required></textarea>
+      </div>
+      <div class="social-icons">
+        <span class="icon">
+          <a href="#"><i class="pi pi-facebook"></i></a>
+        </span>
+        <span class="icon">
+          <a href="#"><i class="pi pi-linkedin"></i></a>
+        </span>
+        <span class="icon">
+          <a href="#"><i class="pi pi-twitter"></i></a>
+        </span>
+        <span class="icon">
+          <a href="#"><i class="pi pi-google"></i></a>
+        </span>
+      </div>
+      <button type="submit" pButton class="p-button-success">Register</button>
+    </form>
+  </div>
+   -->

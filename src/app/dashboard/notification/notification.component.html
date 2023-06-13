@@ -1,0 +1,78 @@
+<app-dash-header></app-dash-header>
+<!-- <app-header></app-header> -->
+
+
+<!-- <div class="notification-container">
+  <div class="bell-icon" (click)="toggleNotifications()">
+    <i class="pi pi-bell"></i>
+
+    <span
+      *ngIf="notifications.length> 0"
+      id="notificationCountBadge"
+      class="notification-count"
+      >{{notifications.length}}</span
+    >
+  </div>
+  <div class="notifications" [ngClass]="{ open: isOpen }">
+    <div
+      *ngFor="let notification of notifications"
+      class="notification"
+      [ngClass]="{ 'is-read': notification.isRead }"
+    >
+      <p>{{ notification.message }}</p>
+      <button (click)="dismissNotification(notification)">Dismiss</button>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="notification-container">
+    <div class="bell-icon" (click)="toggleNotifications()">
+      <i class="pi pi-fw pi-bell"></i>
+      <span *ngIf="unreadCount > 0" id="notificationCountBadge" class="notification-count">
+        {{ unreadCount }}
+      </span> 
+    </div>
+    <div class="notifications" [ngClass]="{ open: isOpen }">
+      <div *ngFor="let notification of notifications" 
+           class="notification" 
+           [ngClass]="{ 'is-read': notification.isRead }"
+           (click)="markAsRead(notification)">
+        <p>{{ notification.message }}</p>
+      </div>
+    </div>
+  </div>
+  <!-- <app-header></app-header> -->
+  
+  
+  
+  
+  <!-- 
+  <div class="notification-container">
+    <div class="bell-icon" (click)="toggleNotifications()">
+      <i class="pi pi-bell"></i>
+  
+      <span *ngIf="getUnreadNotifications().length > 0" id="notificationCountBadge" class="notification-count">
+        {{ getUnreadNotifications().length }}
+      </span>
+    </div>
+    <div class="notifications" [ngClass]="{ open: isOpen }">
+      <div *ngFor="let notification of getUnreadNotifications()" class="notification">
+        <p>{{ notification.message }}</p>
+        <button (click)="markAsRead(notification)">Mark as Read</button>
+      </div>
+      <div *ngIf="getUnreadNotifications().length === 0" class="no-notifications">
+        No new notifications.
+      </div>
+    </div>
+  </div>
+  
+  <div class="read-notifications">
+    <h3>Read Notifications</h3>
+    <div *ngFor="let notification of getReadNotifications()" class="notification">
+      <p>{{ notification.message }}</p>
+    </div>
+    <div *ngIf="getReadNotifications().length === 0" class="no-notifications">
+      No read notifications.
+    </div>
+  </div> -->

@@ -1,0 +1,347 @@
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  overflow: auto; /* Add scroll functionality to the card container */
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #497f83;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.marquee {
+  background-color: #eef1f5;
+  padding: 1rem;
+  font-weight: bold;
+  color: #070707;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+b
+{
+  color:black
+}
+
+.party-names {
+  font-weight: bold;
+  color: #333333;
+  font-size: 18px;
+}
+
+.case-details {
+  margin-top: 0.5rem;
+  color: #555555;
+  font-size: 14px;
+}
+
+.court-details {
+  margin-top: 0.5rem;
+  color: #555555;
+  font-size: 14px;
+}
+
+.card-header {
+  position: fixed; 
+  top: 0; 
+  z-index: 1; 
+  background-color: #739c89;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #739c89, #5e866e);
+  background-color: #4a947c;
+}
+.content {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.card-wrapper {
+  background-color: #eef1f5;
+  padding: 1rem;
+}
+
+.marquee {
+  /* background-color: #96aeda; */
+  padding: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #497f83;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.card:hover {
+  /* background-color: #cce5a7; */
+}
+
+.party-names {
+  font-weight: bold;
+  color: #333333;
+  font-size: 18px;
+}
+
+.case-details {
+  margin-top: 0.5rem;
+  color: #555555;
+  font-size: 14px;
+}
+
+.court-details {
+  margin-top: 0.5rem;
+  color: #555555;
+  font-size: 14px;
+}
+
+.p-dialog {
+  z-index: 100; /* Ensure the dialog appears above other elements */
+}
+.content {
+  padding: 20px;
+}
+
+.card {
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.marquee {
+  /* background-color: #e0fbf9; */
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.card:nth-child(odd) {
+  background-color: #f0f6f5;
+}
+
+.card:nth-child(even) {
+  background-color: #d2e3e2;
+}
+
+.party-names p {
+  font-weight: bold;
+}
+
+.case-details p,
+.court-details p {
+  margin: 8px 0;
+}
+
+
+
+
+
+
+
+
+/* :host ::ng-deep th,
+:host ::ng-deep td {
+  width: 20%;
+  margin-left: 50%;
+}
+
+ul,
+li {
+  margin-left: 15%;
+}
+
+:host ::ng-deep {
+  margin: 0 .5rem 0 0;
+  min-width: 10rem;
+}
+
+p {
+  margin: 0;
+}
+
+.confirmation-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:host ::ng-deep .p-dialog .p-button {
+  min-width: 6rem;
+}
+
+.mark1 {
+  background-color: #eef1f5;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 20px 20px;
+}
+
+::ng-deep .p-card {
+  background-color: #f8f9fa;
+  height: 70px;
+  border-radius: 1px;
+}
+
+.options1 {
+  display: flex;
+}
+
+::ng-deep .p-card .p-card-body {
+  padding: 0;
+  height: 10px;
+}
+
+::ng-deep .p-calendar .p-inputtext {
+  width: 165px !important;
+  font-size: 0.875rem;
+  padding-left: 1.8rem;
+  height: 41px;
+}
+
+::ng-deep .p-button.p-button-icon-only {
+  height: 41px;
+  background: rgb(219, 218, 218);
+}
+
+::ng-deep .p-card .p-card-content {
+  padding: 20px 20px;
+}
+
+::ng-deep .delete:hover {
+  color: red;
+}
+
+@media screen and (max-width: 768px) {
+  :host ::ng-deep th,
+  :host ::ng-deep td {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  ul,
+  li {
+    margin-left: 0;
+  }
+
+  .options1 {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .mark1 {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  ::ng-deep .p-card {
+    height: 50px;
+  }
+
+  ::ng-deep .p-card .p-card-content {
+    padding: 10px;
+  }
+
+  ::ng-deep .p-calendar .p-inputtext {
+    width: 120px !important;
+    font-size: 0.75rem;
+    padding-left: 1.5rem;
+    height: 30px;
+  }
+
+}
+.table-row {
+    border: 1px solid #ccc;
+  }
+  
+  .table-cell {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  .border
+  {
+    border-color: black;
+  }
+  ::ng-deep .p-table
+  {
+    border: 1px solid;
+  }
+  .my-table {
+    border: 1px solid #000;
+  }
+  
+  .my-table .p-datatable-thead > tr > th,
+  .my-table .p-datatable-tbody > tr > td {
+    border: 1px solid #000;
+  }
+  
+  .my-table .p-datatable-tbody > tr > td {
+    padding: 8px;
+  }
+@media screen and (max-width: 600px) {
+  .p-datatable.p-datatable-responsive .p-datatable-thead > tr > th,
+  .p-datatable.p-datatable-responsive .p-datatable-tfoot > tr > td {
+    display: none;
+  }
+
+  .p-datatable.p-datatable-responsive .p-datatable-tbody > tr > td {
+    display: block;
+    width: 100%;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .p-datatable.p-datatable-responsive .p-datatable-tbody > tr > td:before {
+    content: attr(data-header);
+    float: left;
+    font-weight: bold;
+  }
+}
+
+.party-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vs-text {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: red;
+  font-weight: bold;
+}
+
+.table-cell {
+  padding: 0.5rem;
+}
+
+  
+   */

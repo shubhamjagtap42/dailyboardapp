@@ -1,0 +1,378 @@
+/* Default styles
+
+:host ::ng-deep .card {
+  width: 100%;
+}
+
+:host ::ng-deep ul,
+:host ::ng-deep li {
+  margin-left: 0;
+}
+
+:host ::ng-deep .confirmation-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ ::ng-deep .dialogueorder {
+  min-width: 6rem;
+  border: 1px solid;
+  background-color: black !important;
+}
+
+:host ::ng-deep .mark {
+  background-color: whitesmoke;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+:host ::ng-deep .p-card {
+  background-color: whitesmoke;
+  height: 70px;
+  border-radius: 1px;
+}
+
+:host ::ng-deep .mark {
+  padding: 20px 20px;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 200px; 
+  height: 30px; 
+  font-size: 14px;
+}
+
+:host ::ng-deep .widget-content {
+  height: 143px;
+}
+
+:host ::ng-deep .p-calendar .p-inputtext {
+  width: 165px !important;
+  font-size: 0.875rem;
+  padding-left: 1.8rem;
+  height: 41px;
+}
+
+:host ::ng-deep .p-button.p-button-icon-only {
+  height: 41px;
+  background: rgb(219, 218, 218);
+}
+
+:host ::ng-deep .p-card .p-card-content {
+  padding: 20px 20px;
+}
+
+:host ::ng-deep .p-table.p-datatable-responsive .p-datatable-tbody > tr > td:last-child {
+  display: table-cell !important;
+}
+
+/* Responsive styles */
+
+/* @media screen and (max-width: 768px) {
+  :host ::ng-deep .card {
+    width: 100%;
+  }
+  
+  :host ::ng-deep .widget-content {
+    height: 200px;
+  }
+  
+  :host ::ng-deep .p-card .p-card-content {
+    padding: 30px 20px;
+  }
+  
+}
+
+@media screen and (max-width: 480px) {
+  :host ::ng-deep .card {
+    width: 100%;
+  }
+  
+  :host ::ng-deep .widget-content {
+    height: 250px;
+  }
+  
+  :host ::ng-deep .p-card .p-card-content {
+    padding: 40px 20px;
+  }
+  
+}
+
+
+a{
+  cursor: pointer;
+}
+::ng-deep .orders
+{
+  background-color: rgb(241, 87, 60)!important;
+  color: rgb(243, 236, 236);
+  cursor: pointer;
+} */
+*.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.card-wrapper {
+  width: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.options {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+  border: 1px solid #497f83;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.pi {
+  margin: 0 5px;
+  color: #888;
+}
+
+.searchInputBox {
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.cards-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.card {
+  background-color: #f8f8f8;
+  border: 1px solid #497f83;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  width: 100%;
+}
+
+.card:hover {
+  background-color: #d4d2d2;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #131212;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.party-names {
+  display: flex;
+  align-items: center;
+}
+
+.petitioner,
+.respondent {
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+.case-details,
+.court-details,
+.status-details {
+  margin-bottom: 20px;
+}
+
+.case-info-row,
+.court-info-row,
+.status-info-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  flex: 1;
+}
+
+.case-info,
+.court-info,
+.status-info {
+  flex-basis: 50%;
+  padding: 5px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.value {
+  margin-top: 5px;
+}
+
+.orders {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #62b6cb;
+  color: #131212;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.orders:hover {
+  background-color: #bee1e6;
+  color: #131212;
+}
+
+.dialogueorder {
+  width: 500px;
+  max-width: 100%;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.p-text-secondary {
+  color: #888;
+}
+
+.p-button-text {
+  padding: 0;
+  margin-left: 10px;
+}
+
+.container {
+  position: relative;
+}
+
+.dialogueorder {
+  width: 100%;
+}
+
+.dialog-content {
+  padding: 1rem;
+}
+
+.timeline-event {
+  margin-bottom: 1rem;
+}
+
+.timeline-event a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color
+}
+.timeline-event a:hover {
+  color: #666;
+}
+
+.timeline-date {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.dialog-footer .p-button {
+  margin-left: 1rem;
+}
+
+.cards-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.block1 {
+  float: left;
+  width: 33%;
+  height: 280px;
+  padding: 0px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.block2 {
+  float: left;
+  width: 34%;
+  height: 280px;
+  padding: 0px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.block3 {
+  float: right;
+  width: 33%;
+  height: 280px;
+  padding: 0px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.block1:hover,
+.block2:hover,
+.block3:hover {
+  background-color: #9eb9ad;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.block1 h3,
+.block2 h3,
+.block3 h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.block1 p,
+.block2 p,
+.block3 p {
+  font-size: 14px;
+  color: #666;
+}
+
+.block-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+@media (max-width: 300px) {
+  .case-info,
+  .court-info,
+  .status-info {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+
+  .case-info-row,
+  .court-info-row,
+  .status-info-row {
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 300px) {
+  .card {
+    padding: 15px;
+  }
+}
+
+  

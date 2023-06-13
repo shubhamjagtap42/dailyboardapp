@@ -1,0 +1,85 @@
+<!-- <div class="container">
+    <div class="header">
+      <h1>Welcome to Login</h1>
+    </div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form [formGroup]="myform">
+          <div class="grid">
+            <label for="username">Email</label>
+            <input type="email" pInputText formControlName="email" required />
+          </div>
+          <div class="grid">
+            <label for="password">Password</label>
+            <input type="password" pInputText formControlName="password" required />
+          </div>
+    
+          <div class="login-links">
+            <a href="#">Forgot Password?</a>
+            <a href="#" class="register-link" routerLink="/reg">Register</a>
+          </div>
+          <button
+            type="submit"
+            [disabled]="!myform.valid"
+            pButton
+            (click)="login()"
+            routerLink="/dashboard/dashboard"
+            label="Login"
+          ></button>
+        </form>
+      </div>
+
+    </div>
+
+          <p-toast position="top-left" key="tl"></p-toast> -->
+
+      
+
+          <div class="container">
+            <div class="login-form">
+              <h2>Login</h2>
+              <form [formGroup]="loginForm" class="p-fluid">
+                <div class="p-field">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    formControlName="email"
+                    pInputText
+                    class="p-inputtext"
+                  />
+                  <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="p-error">
+                    <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
+                    <small *ngIf="loginForm.get('email')?.errors?.[email]">Invalid email format.</small>
+                  </div>
+                </div>
+                <div class="p-field">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    formControlName="password"
+                    pPassword
+                    class="p-inputtext"
+                    [ngClass]="{ 'p-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched }"
+                  />
+                  <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="p-error">
+                    <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+                  </div>
+                </div>
+                <div class="p-field">
+                  <button
+                    (click)="login1()"
+                    [disabled]="loading || loginForm.invalid"
+                    pButton
+                    routerLink="/dashboard/dashboard"
+                    type="submit"
+                    class="p-button-primary"
+                  >
+                    <span *ngIf="loading" class="p-progress-spinner-icon"></span>
+                    <span *ngIf="!loading">Login</span>
+                  </button>
+                  <a routerLink="/reg" class="p-button p-button-link">Register</a>
+                </div>
+              </form>
+            </div>
+          </div>
+          

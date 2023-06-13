@@ -1,0 +1,63 @@
+.notification-container {
+    position: relative;
+    margin-left: 20px;
+  }
+  
+  .bell-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    /* border: 1px solid; */
+    margin-top: 10%;
+  }
+  
+  .bell-icon .pi.pi-bell {
+    font-size: 16px;
+    margin-right: 8px;
+    /* border: 1px solid; */
+  }
+  
+  .notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    font-size:10px;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 50%;
+  }
+  #notificationCountBadge
+  {
+    background-color: red;
+    color: white;
+
+
+  }
+  
+  .notifications {
+    position: absolute;
+    top: 35px;
+    right: -200px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 200px;
+    transition: right 0.3s ease-in-out;
+  }
+  
+  .notifications.open {
+    right: 0;
+  }
+  
+  .notification {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .is-read {
+    background-color: #f5f5f5;
+  }
+  
